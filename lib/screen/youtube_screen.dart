@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../Constants.dart';
+
 class YouTubeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: AppColors.greyShade900,
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: AppColors.greyShade900,
         title: Image.network(
           'https://ppe.unc.edu/wp-content/uploads/sites/26/2020/04/yt_logo_rgb_dark.png',
         ),
@@ -15,19 +17,19 @@ class YouTubeScreen extends StatelessWidget {
           IconButton(
             icon: Icon(
               Icons.cast,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.notifications_none,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
           IconButton(
             icon: Icon(
               Icons.search_rounded,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
           CircleAvatar(
@@ -39,22 +41,22 @@ class YouTubeScreen extends StatelessWidget {
       ),
       body: _createBody(context),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey.shade900,
+        backgroundColor: AppColors.greyShade900,
         type: BottomNavigationBarType.fixed,
-        unselectedItemColor: Colors.white,
-        selectedItemColor: Colors.red,
+        unselectedItemColor: AppColors.white,
+        selectedItemColor: AppColors.red,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
             ),
-            label: 'ホーム',
+            label: Strings.homeText,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.search,
             ),
-            label: '検索',
+            label: Strings.searchText,
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -66,13 +68,13 @@ class YouTubeScreen extends StatelessWidget {
             icon: Icon(
               Icons.video_library_sharp,
             ),
-            label: 'チャンネル',
+            label: Strings.channelText,
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.video_library_sharp,
             ),
-            label: 'ライブラリ',
+            label: Strings.libraryText,
           ),
         ],
       ),
@@ -86,46 +88,45 @@ class YouTubeScreen extends StatelessWidget {
           children: [
             _createGenreItem(
               Icons.local_fire_department_sharp,
-              '急上昇',
-              Colors.red,
+              Strings.trendingText,
+              AppColors.red,
               Icons.music_note,
-              '音楽',
-              Colors.greenAccent,
+              Strings.musicText,
+              AppColors.greenAccent,
             ),
             _createGenreItem(
               Icons.videogame_asset,
-              'ゲーム',
-              Colors.orange,
+              Strings.gameText,
+              AppColors.orange,
               Icons.text_snippet,
-              'ニュース',
-              Colors.blueAccent,
+              Strings.newsText,
+              AppColors.blueAccent,
             ),
             _createGenreItem(
               Icons.lightbulb,
-              '学び',
-              Colors.green,
+              Strings.learnText,
+              AppColors.green,
               Icons.live_tv_outlined,
-              'ライブ',
-              Colors.deepOrangeAccent,
+              Strings.liveText,
+              AppColors.deepOrangeAccent,
             ),
             _createGenreItem(
               Icons.sports,
-              'スポーツ',
-              Colors.lightBlueAccent,
+              Strings.sportsText,
+              AppColors.lightBlueAccent,
               null,
               '',
-              Colors.grey.shade900,
+              AppColors.greyShade900,
             ),
           ],
         ),
         Container(
-          padding: EdgeInsets.all(4),
+          padding: EdgeInsets.all(
+            Dimens.d4,
+          ),
           child: Text(
-            '急上昇動画',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.white,
-            ),
+            Strings.trendingVideoText,
+            style: CommonStyle.textNormal,
           ),
         ),
         Column(
@@ -134,11 +135,11 @@ class YouTubeScreen extends StatelessWidget {
               'https://cdn.pixabay.com/photo/2021/01/14/19/30/water-5917708_960_720.jpg',
             ),
             SizedBox(
-              height: 8,
+              height: Dimens.d8,
             ),
             _createVideoItem(context),
             SizedBox(
-              height: 8,
+              height: Dimens.d8,
             ),
             Image.network(
               'https://cdn.pixabay.com/photo/2021/01/14/19/30/water-5917708_960_720.jpg',
@@ -158,16 +159,16 @@ class YouTubeScreen extends StatelessWidget {
     Color rightColor,
   ) {
     final containerPadding = const EdgeInsets.only(
-      top: 4,
-      bottom: 4,
+      top: Dimens.d4,
+      bottom: Dimens.d4,
     );
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
           padding: containerPadding,
-          width: 200,
-          height: 56,
+          width: Dimens.d200,
+          height: Dimens.d56,
           child: ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -179,7 +180,7 @@ class YouTubeScreen extends StatelessWidget {
                   leftIcon,
                 ),
                 SizedBox(
-                  width: 8,
+                  width: Dimens.d8,
                 ),
                 Text(
                   leftLabel,
@@ -190,8 +191,8 @@ class YouTubeScreen extends StatelessWidget {
         ),
         Container(
           padding: containerPadding,
-          width: 200,
-          height: 56,
+          width: Dimens.d200,
+          height: Dimens.d56,
           child: ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
@@ -203,7 +204,7 @@ class YouTubeScreen extends StatelessWidget {
                   rightIcon,
                 ),
                 SizedBox(
-                  width: 8,
+                  width: Dimens.d8,
                 ),
                 Text(
                   rightLabel,
@@ -223,7 +224,7 @@ class YouTubeScreen extends StatelessWidget {
           Row(
             children: [
               SizedBox(
-                width: 8,
+                width: Dimens.d8,
               ),
               CircleAvatar(
                 child: Icon(
@@ -234,19 +235,14 @@ class YouTubeScreen extends StatelessWidget {
                 children: [
                   Container(
                     child: Text(
-                      "\"This is ARASHI LIVE 2020. 12. 31\" DigestMovie",
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                      Strings.videoTitle,
+                      style: CommonStyle.textVideoTitle,
                     ),
                   ),
                   Container(
                     child: Text(
-                      "ARASHI ・ 127万回視聴 ・ 1日前",
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontSize: 12,
-                      ),
+                      Strings.videoDetailText,
+                      style: CommonStyle.textVideoShade,
                     ),
                   ),
                 ],
