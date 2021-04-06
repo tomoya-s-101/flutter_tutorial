@@ -8,76 +8,84 @@ class YouTubeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.greyShade900,
-      appBar: AppBar(
-        backgroundColor: AppColors.greyShade900,
-        title: Image.network(
-          'https://ppe.unc.edu/wp-content/uploads/sites/26/2020/04/yt_logo_rgb_dark.png',
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.cast,
-              color: AppColors.white,
-            ),
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.notifications_none,
-              color: AppColors.white,
-            ),
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.search_rounded,
-              color: AppColors.white,
-            ),
-          ),
-          CircleAvatar(
-            child: Icon(
-              Icons.person,
-            ),
-          ),
-        ],
-      ),
+      appBar: _appBar(),
       body: _createBody(context),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: AppColors.greyShade900,
-        type: BottomNavigationBarType.fixed,
-        unselectedItemColor: AppColors.white,
-        selectedItemColor: AppColors.red,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-            ),
-            label: Strings.homeText,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.search,
-            ),
-            label: Strings.searchText,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_circle_outline,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.video_library_sharp,
-            ),
-            label: Strings.channelText,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.video_library_sharp,
-            ),
-            label: Strings.libraryText,
-          ),
-        ],
+      bottomNavigationBar: _bottomNavigationBar(),
+    );
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      backgroundColor: AppColors.greyShade900,
+      title: Image.network(
+        'https://ppe.unc.edu/wp-content/uploads/sites/26/2020/04/yt_logo_rgb_dark.png',
       ),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(
+            Icons.cast,
+            color: AppColors.white,
+          ),
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.notifications_none,
+            color: AppColors.white,
+          ),
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.search_rounded,
+            color: AppColors.white,
+          ),
+        ),
+        CircleAvatar(
+          child: Icon(
+            Icons.person,
+          ),
+        ),
+      ],
+    );
+  }
+
+  BottomNavigationBar _bottomNavigationBar() {
+    return BottomNavigationBar(
+      backgroundColor: AppColors.greyShade900,
+      type: BottomNavigationBarType.fixed,
+      unselectedItemColor: AppColors.white,
+      selectedItemColor: AppColors.red,
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.home,
+          ),
+          label: Strings.homeText,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.search,
+          ),
+          label: Strings.searchText,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.add_circle_outline,
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.video_library_sharp,
+          ),
+          label: Strings.channelText,
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.video_library_sharp,
+          ),
+          label: Strings.libraryText,
+        ),
+      ],
     );
   }
 
