@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screen/home_screen.dart';
+import 'package:flutter_app/screen/netkeiba_screen.dart';
 import 'package:flutter_app/screen/youtube_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => HomeScreen(),
         '/youtube': (BuildContext context) => YouTubeScreen(),
+        '/netkeiba': (BuildContext context) => NetKeibaScreen(),
       },
     );
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screen/youtube_screen.dart';
 
+import 'netkeiba_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,17 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: Text('YouTube'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NetKeibaScreen(),
+                  ),
+                );
+              },
+              child: Text('NetKeiba'),
             ),
           ],
         ),
