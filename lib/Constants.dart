@@ -5,6 +5,7 @@ class Dimens {
   static const double d8 = 8.0;
   static const double d12 = 12.0;
   static const double d16 = 16.0;
+  static const double d40 = 40.0;
   static const double d56 = 56.0;
   static const double d200 = 200.0;
 }
