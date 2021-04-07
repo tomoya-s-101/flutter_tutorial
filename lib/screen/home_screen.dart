@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screen/netkeiba_screen.dart';
 import 'package:flutter_app/screen/youtube_screen.dart';
 
-import 'netkeiba_screen.dart';
+import '../Constants.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -22,7 +23,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('YouTube'),
+              child: Text(
+                Strings.youtubeText,
+              ),
             ),
             ElevatedButton(
               onPressed: () {
@@ -33,7 +36,9 @@ class HomeScreen extends StatelessWidget {
                   ),
                 );
               },
-              child: Text('NetKeiba'),
+              child: Text(
+                Strings.netKeibaText,
+              ),
             ),
           ],
         ),
