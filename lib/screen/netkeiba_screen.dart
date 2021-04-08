@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/Constants.dart';
+import 'package:flutter_app/component/category_page.dart';
 
 class NetKeibaScreen extends StatelessWidget {
   @override
@@ -60,50 +61,50 @@ class NetKeibaScreen extends StatelessWidget {
 
   Widget _createBody(BuildContext context) {
     return Container(
-      height: Dimens.d40,
-      child: _defaultTabController(),
+      child: CategoryPage(),
     );
   }
 
-  DefaultTabController _defaultTabController() {
-    return  DefaultTabController(
-      // タブの数
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.netkeibaAppBar,
-          bottom: TabBar(
-            isScrollable: true,
-            unselectedLabelColor: AppColors.greyShade500,
-            unselectedLabelStyle: TextStyle(fontSize: 12.0),
-            labelColor: AppColors.netkeibaAppBar,
-            labelStyle: TextStyle(fontSize: 16.0),
-            indicatorColor: AppColors.netkeibaAppBar,
-            indicatorWeight: 2.0,
-            // タブに表示する内容
-            tabs: [
-              Tab(
-                child: Text('Top'),
-              ),
-              Tab(
-                child: Text('Business'),
-              ),
-              Tab(
-                child: Text('Technology'),
-              ),
-            ],
-          ),
-          title: Text('Tabs Demo'),
-        ),
-        body: TabBarView(
-          // 各タブの内容
-          children: [
-            Icon(Icons.directions_car),
-            Icon(Icons.directions_transit),
-            Icon(Icons.directions_bike),
-          ],
-        ),
-      ),
-    );
-  }
+  // DefaultTabController _defaultTabController() {
+  //   return  DefaultTabController(
+  //     // タブの数
+  //     length: 3,
+  //     child: Scaffold(
+  //       appBar: AppBar(
+  //         automaticallyImplyLeading: false,
+  //         backgroundColor: AppColors.white,
+  //         bottom: TabBar(
+  //           isScrollable: true,
+  //           unselectedLabelColor: AppColors.greyShade500,
+  //           unselectedLabelStyle: TextStyle(fontSize: 12.0),
+  //           labelColor: AppColors.netkeibaAppBar,
+  //           labelStyle: TextStyle(fontSize: 16.0),
+  //           indicatorColor: AppColors.netkeibaAppBar,
+  //           indicatorWeight: 2.0,
+  //           // タブに表示する内容
+  //           tabs: [
+  //             Tab(
+  //               child: Text('Top'),
+  //             ),
+  //             Tab(
+  //               child: Text('Business'),
+  //             ),
+  //             Tab(
+  //               child: Text('Technology'),
+  //             ),
+  //           ],
+  //         ),
+  //         title: Text('Tabs Demo'),
+  //       ),
+  //       body: TabBarView(
+  //         // 各タブの内容
+  //         children: [
+  //           Icon(Icons.directions_car),
+  //           Icon(Icons.directions_transit),
+  //           Icon(Icons.directions_bike),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }

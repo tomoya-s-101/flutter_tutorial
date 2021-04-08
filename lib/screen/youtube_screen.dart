@@ -16,6 +16,7 @@ class YouTubeScreen extends StatelessWidget {
 
   AppBar _appBar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: AppColors.greyShade900,
       title: Image.network(
         'https://ppe.unc.edu/wp-content/uploads/sites/26/2020/04/yt_logo_rgb_dark.png',
