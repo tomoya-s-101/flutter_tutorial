@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/component/top_page.dart';
 
 import '../Constants.dart';
 
@@ -17,11 +18,9 @@ class _CategoryPageState extends State<CategoryPage> {
           backgroundColor: AppColors.white,
           flexibleSpace: SafeArea(
             child: TabBar(
-              labelPadding: EdgeInsets.all(16),
+              labelPadding: EdgeInsets.all(12),
               unselectedLabelColor: AppColors.greyShade500,
-              unselectedLabelStyle: TextStyle(fontSize: 12.0),
               labelColor: AppColors.netkeibaAppBar,
-              labelStyle: TextStyle(fontSize: 16.0),
               indicatorColor: AppColors.netkeibaAppBar,
               indicatorWeight: 2.0,
               isScrollable: true,
@@ -49,7 +48,7 @@ class _CategoryPageState extends State<CategoryPage> {
         ),
         body: TabBarView(
           children: <Widget>[
-            Text("すべて表示"),
+            TopPage(),
             Text(Strings.newsText),
             Text(Strings.raceText),
             Text(Strings.bettingTicketText),

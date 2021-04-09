@@ -5,6 +5,7 @@ class Dimens {
   static const double d8 = 8.0;
   static const double d12 = 12.0;
   static const double d16 = 16.0;
+  static const double d20 = 20.0;
   static const double d40 = 40.0;
   static const double d56 = 56.0;
   static const double d200 = 200.0;
@@ -55,6 +56,8 @@ class Strings {
   static const String areaListText = "地方一覧";
   static const String newNewsText = "新着ニュース＆コラム";
   static const String moreSeeText = "もっと見る";
+  static const String columnTitle = "【桜花賞見どころ】白毛の２歳女王ソダシの無敗制覇なるか";
+  static const String column2Title = "【ニュージーランドT見どころ】バスラットレオンが人気の中心";
 }
 
 class AppColors {
@@ -66,12 +69,21 @@ class AppColors {
   static const Color green = Color(0xFF388E3C);
   static const Color deepOrangeAccent = Color(0xFFFF6E40);
   static const Color lightBlueAccent = Color(0xFF40C4FF);
+  static const Color greyShade200 = Color(0xFFEEEEEE);
+  static const Color greyShade300 = Color(0xFFE0E0E0);
   static const Color greyShade500 = Color(0xFF9E9E9E);
+  static const Color greyShade700 = Color(0xFF616161);
   static const Color greyShade900 = Color(0xFF212121);
+  static const Color greyNetKeiba = Color(0xB3FFFFFF);
+  static const Color greyNetKeibaButton = Color(0x8AFFFFFF);
   static const Color netkeibaAppBar = Color(0xFF0D47A1);
+  static const Color lightBlue = Color(0xFF039BE5);
 }
 
 class CommonStyle {
+  static const TextStyle bold = TextStyle(
+    fontWeight: FontWeight.bold,
+  );
   static const TextStyle textNormal = TextStyle(
     fontSize: Dimens.d16,
     color: Colors.white,
@@ -82,5 +94,15 @@ class CommonStyle {
   static const TextStyle textVideoShade = TextStyle(
     color: AppColors.greyShade500,
     fontSize: Dimens.d12,
+  );
+  static const TextStyle textConvenience = TextStyle(
+    color: AppColors.lightBlue,
+    fontWeight: FontWeight.bold,
+    fontSize: 16,
+  );
+  static const TextStyle textFlashReport = TextStyle(
+    color: AppColors.greyShade700,
+    fontWeight: FontWeight.bold,
+    fontSize: 20,
   );
 }
