@@ -17,10 +17,16 @@ class TopPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
+        SizedBox(
+          height: 20,
+        ),
         Container(
           height: 240,
           child: Image.network(
               'https://www.photock.jp/photo/middle/photo0000-4262.jpg'),
+        ),
+        SizedBox(
+          height: 12,
         ),
         _createConvenienceServiceButton(),
         SizedBox(
@@ -124,7 +130,7 @@ Widget _createFlashReport() {
   );
 
   return Container(
-    height: 180,
+    height: 172,
     color: AppColors.greyShade200,
     child: Column(
       children: [
@@ -137,50 +143,99 @@ Widget _createFlashReport() {
               Strings.flashReportText,
               style: CommonStyle.textFlashReport,
             ),
-            ButtonTheme(
-              minWidth: 20,
-              height: 28,
-              buttonColor: AppColors.greyShade300,
-              child: OutlineButton(
-                child: Text(
-                  Strings.areaListText,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                onPressed: () {},
+            SizedBox(
+              width: 160,
+            ),
+            FlatButton(
+              child: Text(
+                Strings.areaListText,
               ),
+              color: AppColors.greyShade300,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              onPressed: () {},
             ),
           ],
         ),
+        SizedBox(
+          height: 12,
+        ),
         Row(
           children: [
-            OutlineButton(
+            SizedBox(
+              width: 8,
+            ),
+            Container(
+              height: 100,
+              width: 120,
               color: AppColors.white,
-              onPressed: () {},
-              borderSide: borderData,
-              child: Column(
-                children: [
-                  Icon(
-                    Icons.offline_bolt,
-                  ),
-                  Text('水沢1R'),
-                  Text('C2'),
-                ],
+              child: OutlineButton(
+                color: AppColors.white,
+                onPressed: () {},
+                borderSide: borderData,
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.offline_bolt,
+                    ),
+                    Text(
+                      '水沢1R',
+                      style: CommonStyle.netkeibaColor,
+                    ),
+                    Text('C2'),
+                    Container(
+                      height: 18,
+                      margin: EdgeInsets.only(
+                        top: 8,
+                        bottom: 8,
+                      ),
+                      color: AppColors.greyShade300,
+                      child: Text('11:50'),
+                      padding: EdgeInsets.only(
+                        left: 24,
+                        right: 24,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            OutlineButton(
+            SizedBox(
+              width: 8,
+            ),
+            Container(
+              height: 100,
+              width: 120,
               color: AppColors.white,
-              onPressed: () {},
-              borderSide: borderData,
-              child: Column(
-                children: [
-                  Icon(
-                    Icons.offline_bolt,
-                  ),
-                  Text('名古屋2R'),
-                  Text('C24組'),
-                ],
+              child: OutlineButton(
+                color: AppColors.white,
+                onPressed: () {},
+                borderSide: borderData,
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.offline_bolt,
+                    ),
+                    Text(
+                      '名古屋2R',
+                      style: CommonStyle.netkeibaColor,
+                    ),
+                    Text('C24組'),
+                    Container(
+                      height: 18,
+                      margin: EdgeInsets.only(
+                        top: 4,
+                      ),
+                      color: AppColors.greyShade300,
+                      child: Text('11:30'),
+                      padding: EdgeInsets.only(
+                        left: 24,
+                        right: 24,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
@@ -201,19 +256,18 @@ Widget _createNewNews() {
           Strings.newNewsText,
           style: CommonStyle.textFlashReport,
         ),
-        ButtonTheme(
-          minWidth: 20,
-          height: 28,
-          buttonColor: AppColors.greyNetKeibaButton,
-          child: OutlineButton(
-            child: Text(
-              Strings.moreSeeText,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            onPressed: () {},
+        SizedBox(
+          width: 100,
+        ),
+        FlatButton(
+          child: Text(
+            Strings.moreSeeText,
           ),
+          color: AppColors.greyShade300,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          onPressed: () {},
         ),
       ],
     ),
@@ -231,6 +285,16 @@ Widget _createColumnContents(// BuildContext context,
         ),
         title: Text(
           Strings.columnTitle,
+          style: CommonStyle.bold,
+        ),
+      ),
+      ListTile(
+        leading: Image.network(
+          'https://www.photock.jp/photo/middle/photo0000-1555.jpg',
+        ),
+        title: Text(
+          Strings.column2Title,
+          style: CommonStyle.bold,
         ),
       ),
     ],

@@ -84,6 +84,10 @@ class CommonStyle {
   static const TextStyle bold = TextStyle(
     fontWeight: FontWeight.bold,
   );
+  static const TextStyle netkeibaColor = TextStyle(
+    fontWeight: FontWeight.bold,
+    color: AppColors.netkeibaAppBar,
+  );
   static const TextStyle textNormal = TextStyle(
     fontSize: Dimens.d16,
     color: Colors.white,
