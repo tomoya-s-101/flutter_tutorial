@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/screen/mercari_screen.dart';
 import 'package:flutter_app/screen/netkeiba_screen.dart';
 import 'package:flutter_app/screen/youtube_screen.dart';
 
@@ -38,6 +39,19 @@ class HomeScreen extends StatelessWidget {
               },
               child: Text(
                 Strings.netKeibaText,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MercariScreen(),
+                  ),
+                );
+              },
+              child: Text(
+                Strings.mercariText,
               ),
             ),
           ],
