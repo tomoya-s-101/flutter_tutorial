@@ -22,6 +22,12 @@ class HomeScreen extends StatelessWidget {
               },
               child: Text('YouTube'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/async');
+              },
+              child: Text('Async'),
+            ),
           ],
         ),
       ),
