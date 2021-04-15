@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screen/home_screen.dart';
-import 'package:flutter_app/screen/mercari_screen.dart';
+import 'package:flutter_app/practice3/mercari_screen.dart';
 import 'package:flutter_app/screen/youtube_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => HomeScreen(),
         '/youtube': (BuildContext context) => YouTubeScreen(),
-        '/mercari': (BuildContext context) => MercariScreen(),
+        '/mercari': (context) => MercariScreen(),
       },
     );
   }

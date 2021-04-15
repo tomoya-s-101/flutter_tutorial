@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screen/mercari_screen.dart';
 import 'package:flutter_app/screen/youtube_screen.dart';
 
 import '../Constants.dart';
@@ -29,12 +28,7 @@ class HomeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => MercariScreen(),
-                  ),
-                );
+                Navigator.pushNamed(context, '/mercari');
               },
               child: Text(
                 Strings.mercariText,

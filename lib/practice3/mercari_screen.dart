@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../Constants.dart';
 
@@ -237,7 +236,6 @@ class MercariScreen extends StatelessWidget {
   }
 
   Widget _buildProductList(ProductData productData) {
-    String productPrice = NumberFormat('#,##0').format(productData.price);
     return Container(
       child: Row(
         children: [
@@ -264,7 +262,7 @@ class MercariScreen extends StatelessWidget {
                   height: Dimens.d4,
                 ),
                 Text(
-                  productPrice,
+                  productData.price,
                   style: CommonStyle.bold,
                 ),
                 SizedBox(
@@ -315,19 +313,19 @@ class MercariScreen extends StatelessWidget {
       ProductData(
         'images/nicon.png',
         'NiconD5500',
-        55000,
+        '¥55,000',
         446,
       ),
       ProductData(
         'images/nicon.png',
         '早い者勝ち！【新品】ERA...',
-        15700,
+        '¥15,700',
         177,
       ),
       ProductData(
         'images/nicon.png',
         'NiconD5500',
-        55000,
+        '¥55,000',
         446,
       ),
     ];
