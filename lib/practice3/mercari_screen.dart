@@ -206,42 +206,41 @@ class MercariScreen extends StatelessWidget {
   }
 
   Widget _buildCard(IconData icon, String text, [String subText = '']) {
-    return Container(
-      width: Dimens.d84,
-      height: Dimens.d92,
-      decoration: BoxDecoration(
-        color: AppColors.white,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            icon,
-            size: Dimens.d32,
-            color: AppColors.greyShade700,
-          ),
-          Text(
-            text,
-            textAlign: TextAlign.center,
-            style: CommonStyle.cardText,
-          ),
-          Text(
-            subText,
-            textAlign: TextAlign.center,
-            style: CommonStyle.cardText,
-          ),
-        ],
+    return Card(
+      child: Container(
+        width: Dimens.d84,
+        height: Dimens.d92,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: Dimens.d32,
+              color: AppColors.greyShade700,
+            ),
+            Text(
+              text,
+              textAlign: TextAlign.center,
+              style: CommonStyle.cardText,
+            ),
+            Text(
+              subText,
+              textAlign: TextAlign.center,
+              style: CommonStyle.cardText,
+            ),
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildProductList(ProductData productData) {
     return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: Dimens.d16,
+      ),
       child: Row(
         children: [
-          SizedBox(
-            width: Dimens.d16,
-          ),
           Container(
             height: Dimens.d72,
             width: Dimens.d72,
@@ -287,7 +286,11 @@ class MercariScreen extends StatelessWidget {
               ],
             ),
           ),
-          //TODO 出品するのContainerだけを右詰めにしたい
+          Expanded(
+            child: SizedBox(
+              height: 0,
+            ),
+          ),
           Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
