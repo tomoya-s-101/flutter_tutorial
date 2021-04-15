@@ -91,6 +91,8 @@ class YouTubeScreen extends StatelessWidget {
   }
 
   Widget _createBody(BuildContext context) {
+    final videoList = _createVideoData();
+
     return ListView(
       children: [
         Column(
@@ -138,22 +140,16 @@ class YouTubeScreen extends StatelessWidget {
             style: CommonStyle.textNormal,
           ),
         ),
-        Column(
-          children: [
-            Image.network(
-              'https://cdn.pixabay.com/photo/2021/01/14/19/30/water-5917708_960_720.jpg',
-            ),
-            SizedBox(
-              height: Dimens.d8,
-            ),
-            _createVideoItem(context),
-            SizedBox(
-              height: Dimens.d8,
-            ),
-            Image.network(
-              'https://cdn.pixabay.com/photo/2021/01/14/19/30/water-5917708_960_720.jpg',
-            ),
-          ],
+        ListView.builder(
+          shrinkWrap: true,
+          itemCount: videoList.length,
+          itemBuilder: (context, index) {
+            final data = videoList[index];
+            return _createVideoItem(
+              context,
+              data,
+            );
+          },
         ),
       ],
     );
@@ -226,40 +222,66 @@ class YouTubeScreen extends StatelessWidget {
     );
   }
 
-  Widget _createVideoItem(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              SizedBox(
-                width: Dimens.d8,
-              ),
-              CircleAvatar(
-                child: Icon(
-                  Icons.person,
-                ),
-              ),
-              Column(
-                children: [
-                  Container(
-                    child: Text(
-                      Strings.videoTitle,
-                      style: CommonStyle.textVideoTitle,
-                    ),
-                  ),
-                  Container(
-                    child: Text(
-                      Strings.videoDetailText,
-                      style: CommonStyle.textVideoShade,
-                    ),
-                  ),
-                ],
-              ),
-            ],
+  Widget _createVideoItem(
+    BuildContext context,
+    VideoData data,
+  ) {
+    return Column(
+      children: [
+        Image.asset(data.image),
+        ListTile(
+          title: Text(
+            data.title,
+            style: CommonStyle.textNormal,
           ),
-        ],
-      ),
+          subtitle: Text(
+            data.subTitle,
+            style: CommonStyle.textVideoShade,
+          ),
+          leading: CircleAvatar(
+            radius: Dimens.d20,
+            child: Icon(
+              Icons.person,
+            ),
+          ),
+          trailing: Icon(
+            Icons.more_vert,
+            color: AppColors.white,
+          ),
+        ),
+      ],
     );
   }
+
+  List<VideoData> _createVideoData() {
+    return [
+      VideoData(
+        'images/city.png',
+        Strings.videoTitle,
+        Strings.videoDetailText,
+      ),
+      VideoData(
+        'images/city.png',
+        Strings.videoTitle,
+        Strings.videoDetailText,
+      ),
+      VideoData(
+        'images/city.png',
+        Strings.videoTitle,
+        Strings.videoDetailText,
+      ),
+    ];
+  }
+}
+
+class VideoData {
+  final image;
+  final title;
+  final subTitle;
+
+  VideoData(
+    this.image,
+    this.title,
+    this.subTitle,
+  );
 }
