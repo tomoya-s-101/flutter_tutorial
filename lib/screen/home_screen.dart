@@ -20,6 +20,14 @@ class HomeScreen extends StatelessWidget {
                 Strings.youtubeText,
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/mercari');
+              },
+              child: Text(
+                Strings.mercariText,
+              ),
+            ),
           ],
         ),
       ),
