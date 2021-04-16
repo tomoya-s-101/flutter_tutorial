@@ -6,15 +6,22 @@ class Dimens {
   static const double d12 = 12.0;
   static const double d16 = 16.0;
   static const double d20 = 20.0;
+  static const double d32 = 32.0;
   static const double d40 = 40.0;
   static const double d56 = 56.0;
+  static const double d72 = 72.0;
+  static const double d84 = 84.0;
+  static const double d92 = 92.0;
   static const double d200 = 200.0;
+  static const double d360 = 360.0;
+  static const double d400 = 400.0;
 }
 
 class Strings {
   // HomeScreen
   static const String youtubeText = "YouTube";
   static const String netKeibaText = "netkeiba";
+  static const String mercariText = "メルカリ";
 
   // YouTubeScreen
   static const String trendingText = "急上昇";
@@ -58,6 +65,22 @@ class Strings {
   static const String moreSeeText = "もっと見る";
   static const String columnTitle = "【桜花賞見どころ】白毛の２歳女王ソダシの無敗制覇なるか";
   static const String column2Title = "【ニュージーランドT見どころ】バスラットレオンが人気の中心";
+
+  // MercariScreen
+  static const String listingText = "出品";
+  static const String mercariNewsText = "お知らせ";
+  static const String merpayText = "メルペイ";
+  static const String shortCutText = "出品へのショートカット";
+  static const String takePictureText = "写真を撮る";
+  static const String albumText = "アルバム";
+  static const String barcodeText = "バーコード";
+  static const String draftListText = "下書き一覧";
+  static const String salesText = "売れやすい持ち物";
+  static const String notUseListingText = "使わないモノを出品してみよう！";
+  static const String seeAllText = "すべて見る＞";
+  static const String findingPersonText = "人が探しています";
+  static const String listText = "出品する";
+  static const String bookAndCosmeticText = "(本・コスメ)";
 }
 
 class AppColors {
@@ -78,11 +101,35 @@ class AppColors {
   static const Color greyNetKeibaButton = Color(0x8AFFFFFF);
   static const Color netkeibaAppBar = Color(0xFF0D47A1);
   static const Color lightBlue = Color(0xFF039BE5);
+  static const Color black = Color(0xFF000000);
 }
 
 class CommonStyle {
   static const TextStyle bold = TextStyle(
     fontWeight: FontWeight.bold,
+  );
+  static const TextStyle boldBlack = TextStyle(
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
+  );
+  static const TextStyle fontSizeSmall = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: Dimens.d8,
+  );
+  static const TextStyle subTitleColor = TextStyle(
+    color: AppColors.greyShade700,
+  );
+  static const TextStyle subTextColor = TextStyle(
+    color: AppColors.lightBlue,
+  );
+  static const TextStyle shortCutText = TextStyle(
+    color: AppColors.greyShade700,
+    fontWeight: FontWeight.bold,
+    fontSize: Dimens.d16,
+  );
+  static const TextStyle cardText = TextStyle(
+    color: AppColors.greyShade700,
+    fontSize: Dimens.d12,
   );
   static const TextStyle netkeibaColor = TextStyle(
     fontWeight: FontWeight.bold,
@@ -95,6 +142,10 @@ class CommonStyle {
   static const TextStyle textVideoTitle = TextStyle(
     color: Colors.white,
   );
+  static const TextStyle whiteBold = TextStyle(
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
   static const TextStyle textVideoShade = TextStyle(
     color: AppColors.greyShade500,
     fontSize: Dimens.d12,
@@ -102,11 +153,11 @@ class CommonStyle {
   static const TextStyle textConvenience = TextStyle(
     color: AppColors.lightBlue,
     fontWeight: FontWeight.bold,
-    fontSize: 16,
+    fontSize: Dimens.d16,
   );
   static const TextStyle textFlashReport = TextStyle(
     color: AppColors.greyShade700,
     fontWeight: FontWeight.bold,
-    fontSize: 20,
+    fontSize: Dimens.d20,
   );
 }
