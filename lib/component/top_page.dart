@@ -21,9 +21,10 @@ class TopPage extends StatelessWidget {
           height: 20,
         ),
         Container(
-          height: 240,
-          child: Image.network(
-              'https://www.photock.jp/photo/middle/photo0000-4262.jpg'),
+          child: Image.asset(
+            'images/netkeiba_viewpager.png',
+            fit: BoxFit.cover,
+          ),
         ),
         SizedBox(
           height: 12,
@@ -130,31 +131,37 @@ Widget _createFlashReport() {
   );
 
   return Container(
+    padding: EdgeInsets.symmetric(
+      horizontal: Dimens.d8,
+    ),
     height: 172,
     color: AppColors.greyShade200,
     child: Column(
       children: [
         Row(
           children: [
-            SizedBox(
-              width: 8,
-            ),
             Text(
               Strings.flashReportText,
               style: CommonStyle.textFlashReport,
             ),
-            SizedBox(
-              width: 160,
+            Expanded(
+              child: SizedBox(
+                height: 0,
+              ),
             ),
-            FlatButton(
-              child: Text(
-                Strings.areaListText,
+            ButtonTheme(
+              height: Dimens.d28,
+              child: FlatButton(
+                child: Text(
+                  Strings.areaListText,
+                  style: CommonStyle.textFlatButton,
+                ),
+                color: AppColors.greyShade300,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                onPressed: () {},
               ),
-              color: AppColors.greyShade300,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              onPressed: () {},
             ),
           ],
         ),
@@ -163,9 +170,6 @@ Widget _createFlashReport() {
         ),
         Row(
           children: [
-            SizedBox(
-              width: 8,
-            ),
             Container(
               height: 100,
               width: 120,
@@ -176,6 +180,9 @@ Widget _createFlashReport() {
                 borderSide: borderData,
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: Dimens.d4,
+                    ),
                     Icon(
                       Icons.offline_bolt,
                     ),
@@ -183,12 +190,15 @@ Widget _createFlashReport() {
                       '水沢1R',
                       style: CommonStyle.netkeibaColor,
                     ),
-                    Text('C2'),
+                    Container(
+                      height: 20,
+                      child: Text('C2'),
+                    ),
                     Container(
                       height: 18,
                       margin: EdgeInsets.only(
-                        top: 8,
-                        bottom: 8,
+                        top: 4,
+                        bottom: 4,
                       ),
                       color: AppColors.greyShade300,
                       child: Text('11:50'),
@@ -214,6 +224,9 @@ Widget _createFlashReport() {
                 borderSide: borderData,
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: Dimens.d4,
+                    ),
                     Icon(
                       Icons.offline_bolt,
                     ),
@@ -221,11 +234,15 @@ Widget _createFlashReport() {
                       '名古屋2R',
                       style: CommonStyle.netkeibaColor,
                     ),
-                    Text('C24組'),
+                    Container(
+                      height: 20,
+                      child: Text('C24組'),
+                    ),
                     Container(
                       height: 18,
                       margin: EdgeInsets.only(
                         top: 4,
+                        bottom: 4,
                       ),
                       color: AppColors.greyShade300,
                       child: Text('11:30'),
@@ -247,27 +264,33 @@ Widget _createFlashReport() {
 
 Widget _createNewNews() {
   return Container(
+    padding: EdgeInsets.symmetric(
+      horizontal: Dimens.d8,
+    ),
     child: Row(
       children: [
-        SizedBox(
-          width: 8,
-        ),
         Text(
           Strings.newNewsText,
           style: CommonStyle.textFlashReport,
         ),
-        SizedBox(
-          width: 100,
+        Expanded(
+          child: SizedBox(
+            height: 0,
+          ),
         ),
-        FlatButton(
-          child: Text(
-            Strings.moreSeeText,
+        ButtonTheme(
+          height: Dimens.d28,
+          child: FlatButton(
+            child: Text(
+              Strings.moreSeeText,
+              style: CommonStyle.textFlatButton,
+            ),
+            color: AppColors.greyShade300,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            onPressed: () {},
           ),
-          color: AppColors.greyShade300,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          onPressed: () {},
         ),
       ],
     ),
@@ -280,21 +303,30 @@ Widget _createColumnContents(// BuildContext context,
   return Column(
     children: [
       ListTile(
-        leading: Image.network(
-          'https://www.photock.jp/photo/middle/photo0000-1555.jpg',
+        leading: Image.asset(
+          'images/netkeiba_column.png',
+          fit: BoxFit.fill,
         ),
         title: Text(
           Strings.columnTitle,
           style: CommonStyle.bold,
         ),
+        subtitle: Text(
+          '1時間前',
+          style: CommonStyle.cardText,
+        ),
       ),
       ListTile(
-        leading: Image.network(
-          'https://www.photock.jp/photo/middle/photo0000-1555.jpg',
+        leading: Image.asset(
+          'images/netkeiba_column.png',
         ),
         title: Text(
           Strings.column2Title,
           style: CommonStyle.bold,
+        ),
+        subtitle: Text(
+          '1時間前',
+          style: CommonStyle.cardText,
         ),
       ),
     ],

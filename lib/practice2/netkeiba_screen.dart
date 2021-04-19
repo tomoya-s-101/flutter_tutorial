@@ -16,9 +16,21 @@ class NetKeibaScreen extends StatelessWidget {
   AppBar _appBar() {
     return AppBar(
       backgroundColor: AppColors.netkeibaAppBar,
-      title: Text(
-        'netkeiba',
+      centerTitle: false,
+      title: Image.asset(
+        'images/netkeiba_title.png',
+        fit: BoxFit.cover,
+        height: Dimens.d16,
       ),
+      actions: [
+        IconButton(
+          icon: Image.asset(
+            'images/netkeiba_icon.png',
+          ),
+          iconSize: Dimens.d72,
+          onPressed: () {},
+        )
+      ],
     );
   }
 
@@ -64,47 +76,4 @@ class NetKeibaScreen extends StatelessWidget {
       child: CategoryPage(),
     );
   }
-
-  // DefaultTabController _defaultTabController() {
-  //   return  DefaultTabController(
-  //     // タブの数
-  //     length: 3,
-  //     child: Scaffold(
-  //       appBar: AppBar(
-  //         automaticallyImplyLeading: false,
-  //         backgroundColor: AppColors.white,
-  //         bottom: TabBar(
-  //           isScrollable: true,
-  //           unselectedLabelColor: AppColors.greyShade500,
-  //           unselectedLabelStyle: TextStyle(fontSize: 12.0),
-  //           labelColor: AppColors.netkeibaAppBar,
-  //           labelStyle: TextStyle(fontSize: 16.0),
-  //           indicatorColor: AppColors.netkeibaAppBar,
-  //           indicatorWeight: 2.0,
-  //           // タブに表示する内容
-  //           tabs: [
-  //             Tab(
-  //               child: Text('Top'),
-  //             ),
-  //             Tab(
-  //               child: Text('Business'),
-  //             ),
-  //             Tab(
-  //               child: Text('Technology'),
-  //             ),
-  //           ],
-  //         ),
-  //         title: Text('Tabs Demo'),
-  //       ),
-  //       body: TabBarView(
-  //         // 各タブの内容
-  //         children: [
-  //           Icon(Icons.directions_car),
-  //           Icon(Icons.directions_transit),
-  //           Icon(Icons.directions_bike),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
 }
