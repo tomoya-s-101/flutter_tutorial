@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/screen/youtube_screen.dart';
+
+import '../Constants.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -13,14 +14,27 @@ class HomeScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => YouTubeScreen(),
-                  ),
-                );
+                Navigator.pushNamed(context, '/youtube');
               },
-              child: Text('YouTube'),
+              child: Text(
+                Strings.youtubeText,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/netkeiba');
+              },
+              child: Text(
+                Strings.netKeibaText,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/mercari');
+              },
+              child: Text(
+                Strings.mercariText,
+              ),
             ),
             ElevatedButton(
               onPressed: () {

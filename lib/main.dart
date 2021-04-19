@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/practice1/youtube_screen.dart';
 import 'package:flutter_app/async/async_screen.dart';
 import 'package:flutter_app/screen/home_screen.dart';
-import 'package:flutter_app/screen/youtube_screen.dart';
+import 'package:flutter_app/practice3/mercari_screen.dart';
+import 'package:flutter_app/practice2/netkeiba_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -25,8 +27,10 @@ class MyApp extends StatelessWidget {
       ],
       initialRoute: '/',
       routes: <String, WidgetBuilder>{
-        '/': (BuildContext context) => HomeScreen(),
-        '/youtube': (BuildContext context) => YouTubeScreen(),
+        '/': (context) => HomeScreen(),
+        '/youtube': (context) => YouTubeScreen(),
+        '/mercari': (context) => MercariScreen(),
+        '/netkeiba': (context) => NetKeibaScreen(),
         '/async': (context) => AsyncScreen(),
       },
     );
