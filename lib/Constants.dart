@@ -6,8 +6,10 @@ class Dimens {
   static const double d12 = 12.0;
   static const double d16 = 16.0;
   static const double d20 = 20.0;
+  static const double d28 = 28.0;
   static const double d32 = 32.0;
   static const double d40 = 40.0;
+  static const double d44 = 44.0;
   static const double d56 = 56.0;
   static const double d72 = 72.0;
   static const double d84 = 84.0;
@@ -159,5 +161,10 @@ class CommonStyle {
     color: AppColors.greyShade700,
     fontWeight: FontWeight.bold,
     fontSize: Dimens.d20,
+  );
+  static const TextStyle textFlatButton = TextStyle(
+    color: AppColors.greyShade700,
+    fontWeight: FontWeight.bold,
+    fontSize: Dimens.d12,
   );
 }

@@ -22,6 +22,14 @@ class HomeScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                Navigator.pushNamed(context, '/netkeiba');
+              },
+              child: Text(
+                Strings.netKeibaText,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Navigator.pushNamed(context, '/mercari');
               },
               child: Text(
