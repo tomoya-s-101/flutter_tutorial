@@ -36,6 +36,12 @@ class HomeScreen extends StatelessWidget {
                 Strings.mercariText,
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/async');
+              },
+              child: Text('Async'),
+            ),
           ],
         ),
       ),
