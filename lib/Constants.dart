@@ -24,6 +24,8 @@ class Strings {
   static const String youtubeText = "YouTube";
   static const String netKeibaText = "netkeiba";
   static const String mercariText = "メルカリ";
+  static const String asyncText = "async";
+  static const String qiitaText = "Qiita";
 
   // YouTubeScreen
   static const String trendingText = "急上昇";
@@ -83,6 +85,21 @@ class Strings {
   static const String findingPersonText = "人が探しています";
   static const String listText = "出品する";
   static const String bookAndCosmeticText = "(本・コスメ)";
+
+  // AsyncScreen
+  static const String cancelText = "キャンセル";
+  static const String saveText = "保存";
+  static const String nameText = "名前";
+  static const String ageText = "年齢";
+  static const String birthdayText = "誕生日";
+  static const String isEmptyText = "未入力です";
+  static const String ageValidatorText = "未入力、もしくは数字ではありません";
+
+  // QiitaClientScreen
+  static const String qiitaClientText = "QiitaClient";
+  static const String flutterText = "Flutter";
+  static const String androidText = "android";
+  static const String iosText = "ios";
 }
 
 class AppColors {
