@@ -5,8 +5,7 @@ import 'package:dio/dio.dart';
 
 part 'youtube_api.g.dart';
 
-//TODO Hosting
-@RestApi(baseUrl: "")
+@RestApi(baseUrl: "https://hosting-json-a9ea3.web.app/")
 abstract class YouTubeApi {
   factory YouTubeApi(Dio dio, {String baseUrl}) = _YouTubeApi;
 
