@@ -1,15 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/practice1/youtube_state_notifier.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Constants.dart';
+import 'model/youtube_item.dart';
 
-class YouTubeScreen extends StatelessWidget {
+final youtubeStateNotifier =
+StateNotifierProvider((ref) => YouTubeStateNotifier());
+
+class YouTubeScreen extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final state = watch(youtubeStateNotifier.state);
+
     return Scaffold(
       backgroundColor: AppColors.greyShade900,
       appBar: _appBar(),
-      body: _createBody(context),
+      body: Stack(
+        children: [
+          Container(
+            child: Center(
+              child: state.isReadyData
+                  ? _createBody(context, state.youtubeItem)
+                  : Container(),
+            ),
+          ),
+          state.isLoading
+              ? Container(
+            color: Color(0x88000000),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+              : Container(),
+        ],
+      ),
       bottomNavigationBar: _bottomNavigationBar(),
     );
   }
@@ -90,7 +116,7 @@ class YouTubeScreen extends StatelessWidget {
     );
   }
 
-  Widget _createBody(BuildContext context) {
+  Widget _createBody(BuildContext context, List<YouTubeItem> youtubeItems) {
     final videoList = _createVideoData();
 
     return ListView(
