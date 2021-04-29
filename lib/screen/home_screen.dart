@@ -40,7 +40,17 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/async');
               },
-              child: Text('Async'),
+              child: Text(
+                Strings.asyncText,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/qiita');
+              },
+              child: Text(
+                Strings.qiitaText,
+              ),
             ),
           ],
         ),

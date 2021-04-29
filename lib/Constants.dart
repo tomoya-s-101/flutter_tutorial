@@ -24,6 +24,8 @@ class Strings {
   static const String youtubeText = "YouTube";
   static const String netKeibaText = "netkeiba";
   static const String mercariText = "メルカリ";
+  static const String asyncText = "async";
+  static const String qiitaText = "Qiita";
 
   // YouTubeScreen
   static const String trendingText = "急上昇";
@@ -92,6 +94,12 @@ class Strings {
   static const String birthdayText = "誕生日";
   static const String isEmptyText = "未入力です";
   static const String ageValidatorText = "未入力、もしくは数字ではありません";
+
+  // QiitaClientScreen
+  static const String qiitaClientText = "QiitaClient";
+  static const String flutterText = "Flutter";
+  static const String androidText = "android";
+  static const String iosText = "ios";
 }
 
 class AppColors {
