@@ -7,7 +7,7 @@ import '../Constants.dart';
 import 'model/youtube_item.dart';
 
 final youtubeStateNotifier =
-StateNotifierProvider((ref) => YouTubeStateNotifier());
+    StateNotifierProvider((ref) => YouTubeStateNotifier());
 
 class YouTubeScreen extends ConsumerWidget {
   @override
@@ -28,11 +28,11 @@ class YouTubeScreen extends ConsumerWidget {
           ),
           state.isLoading
               ? Container(
-            color: Color(0x88000000),
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          )
+                  color: Color(0x88000000),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )
               : Container(),
         ],
       ),
@@ -117,8 +117,6 @@ class YouTubeScreen extends ConsumerWidget {
   }
 
   Widget _createBody(BuildContext context, List<YouTubeItem> youtubeItems) {
-    final videoList = _createVideoData();
-
     return ListView(
       children: [
         Column(
@@ -168,9 +166,9 @@ class YouTubeScreen extends ConsumerWidget {
         ),
         ListView.builder(
           shrinkWrap: true,
-          itemCount: videoList.length,
+          itemCount: youtubeItems.length,
           itemBuilder: (context, index) {
-            final data = videoList[index];
+            final data = youtubeItems[index];
             return _createVideoItem(
               context,
               data,
@@ -250,18 +248,20 @@ class YouTubeScreen extends ConsumerWidget {
 
   Widget _createVideoItem(
     BuildContext context,
-    VideoData data,
+    YouTubeItem data,
   ) {
     return Column(
       children: [
-        Image.asset(data.image),
+        Image.asset(
+          data.image,
+        ),
         ListTile(
           title: Text(
             data.title,
             style: CommonStyle.textNormal,
           ),
           subtitle: Text(
-            data.subTitle,
+            data.subtitle,
             style: CommonStyle.textVideoShade,
           ),
           leading: CircleAvatar(
@@ -278,36 +278,4 @@ class YouTubeScreen extends ConsumerWidget {
       ],
     );
   }
-
-  List<VideoData> _createVideoData() {
-    return [
-      VideoData(
-        'images/city.png',
-        Strings.videoTitle,
-        Strings.videoDetailText,
-      ),
-      VideoData(
-        'images/city.png',
-        Strings.videoTitle,
-        Strings.videoDetailText,
-      ),
-      VideoData(
-        'images/city.png',
-        Strings.videoTitle,
-        Strings.videoDetailText,
-      ),
-    ];
-  }
-}
-
-class VideoData {
-  final image;
-  final title;
-  final subTitle;
-
-  VideoData(
-    this.image,
-    this.title,
-    this.subTitle,
-  );
 }

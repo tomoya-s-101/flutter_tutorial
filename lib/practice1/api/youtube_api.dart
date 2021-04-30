@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 
 part 'youtube_api.g.dart';
 
-@RestApi(baseUrl: "https://hosting-json-a9ea3.web.app/")
+@RestApi(baseUrl: "https://hosting-json-a9ea3.web.app")
 abstract class YouTubeApi {
   factory YouTubeApi(Dio dio, {String baseUrl}) = _YouTubeApi;
 
@@ -15,6 +15,6 @@ abstract class YouTubeApi {
     return YouTubeApi(dio);
   }
 
-  @GET("tutorial/youtube.json")
+  @GET("api/v1/youtube.json")
   Future<List<YouTubeItem>> fetchYouTubeItems();
 }
