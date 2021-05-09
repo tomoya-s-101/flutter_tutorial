@@ -2,14 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_app/Constants.dart';
 import 'package:flutter_app/component/category_page.dart';
+import 'package:flutter_app/practice2/netkeiba_state_notifire.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class NetKeibaScreen extends StatelessWidget {
+import 'model/netkeiba_item.dart';
+
+final netkeibaStateNotifier = StateNotifierProvider((ref) => NetkeibaStateNotifier());
+
+class NetKeibaScreen extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final state = watch(netkeibaStateNotifier.state);
+
     return Scaffold(
       appBar: _appBar(),
       drawer: _drawer(context),
-      body: _createBody(context),
+      body: Stack(
+        children: [
+          Container(
+            child: Center(
+              child: state.isReadyData
+                  ? _createBody(context, state.netkeibaItem)
+                  : Container(),
+            ),
+          ),
+          state.isLoading
+              ? Container(
+            color: Color(0x88000000),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          )
+              : Container(),
+        ],
+      ),
     );
   }
 
@@ -71,7 +97,7 @@ class NetKeibaScreen extends StatelessWidget {
     );
   }
 
-  Widget _createBody(BuildContext context) {
+  Widget _createBody(BuildContext context, List<NetkeibaItem> netkeibaItems) {
     return Container(
       child: CategoryPage(),
     );
