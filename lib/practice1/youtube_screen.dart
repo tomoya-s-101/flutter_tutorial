@@ -1,15 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_app/practice1/youtube_state_notifier.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Constants.dart';
+import 'model/youtube_item.dart';
 
-class YouTubeScreen extends StatelessWidget {
+final youtubeStateNotifier =
+    StateNotifierProvider((ref) => YouTubeStateNotifier());
+
+class YouTubeScreen extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final state = watch(youtubeStateNotifier.state);
+
     return Scaffold(
       backgroundColor: AppColors.greyShade900,
       appBar: _appBar(),
-      body: _createBody(context),
+      body: Stack(
+        children: [
+          Container(
+            child: Center(
+              child: state.isReadyData
+                  ? _createBody(context, state.youtubeItem)
+                  : Container(),
+            ),
+          ),
+          state.isLoading
+              ? Container(
+                  color: Color(0x88000000),
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              : Container(),
+        ],
+      ),
       bottomNavigationBar: _bottomNavigationBar(),
     );
   }
@@ -90,9 +116,7 @@ class YouTubeScreen extends StatelessWidget {
     );
   }
 
-  Widget _createBody(BuildContext context) {
-    final videoList = _createVideoData();
-
+  Widget _createBody(BuildContext context, List<YouTubeItem> youtubeItems) {
     return ListView(
       children: [
         Column(
@@ -142,9 +166,9 @@ class YouTubeScreen extends StatelessWidget {
         ),
         ListView.builder(
           shrinkWrap: true,
-          itemCount: videoList.length,
+          itemCount: youtubeItems.length,
           itemBuilder: (context, index) {
-            final data = videoList[index];
+            final data = youtubeItems[index];
             return _createVideoItem(
               context,
               data,
@@ -224,18 +248,20 @@ class YouTubeScreen extends StatelessWidget {
 
   Widget _createVideoItem(
     BuildContext context,
-    VideoData data,
+    YouTubeItem data,
   ) {
     return Column(
       children: [
-        Image.asset(data.image),
+        Image.asset(
+          data.image,
+        ),
         ListTile(
           title: Text(
             data.title,
             style: CommonStyle.textNormal,
           ),
           subtitle: Text(
-            data.subTitle,
+            data.subtitle,
             style: CommonStyle.textVideoShade,
           ),
           leading: CircleAvatar(
@@ -252,36 +278,4 @@ class YouTubeScreen extends StatelessWidget {
       ],
     );
   }
-
-  List<VideoData> _createVideoData() {
-    return [
-      VideoData(
-        'images/city.png',
-        Strings.videoTitle,
-        Strings.videoDetailText,
-      ),
-      VideoData(
-        'images/city.png',
-        Strings.videoTitle,
-        Strings.videoDetailText,
-      ),
-      VideoData(
-        'images/city.png',
-        Strings.videoTitle,
-        Strings.videoDetailText,
-      ),
-    ];
-  }
-}
-
-class VideoData {
-  final image;
-  final title;
-  final subTitle;
-
-  VideoData(
-    this.image,
-    this.title,
-    this.subTitle,
-  );
 }
