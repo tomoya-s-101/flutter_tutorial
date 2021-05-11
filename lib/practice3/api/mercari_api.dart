@@ -3,6 +3,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
 
+part 'mercari_api.g.dart';
+
 @RestApi(baseUrl: "https://hosting-json-a9ea3.web.app/")
 abstract class MercariApi {
   factory MercariApi(Dio dio, {String baseUrl}) = _MercariApi;
