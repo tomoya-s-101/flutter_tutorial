@@ -1,14 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/practice3/mercari_state_notifier.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../Constants.dart';
+import 'model/mercari_item.dart';
 
-class MercariScreen extends StatelessWidget {
+final mercariStateNotifier =
+StateNotifierProvider((ref) => MercariStateNotifier());
+
+class MercariScreen extends ConsumerWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final state = watch(mercariStateNotifier.state);
+
     return MaterialApp(
       home: Scaffold(
         appBar: _appBar(),
-        body: _createBody(context),
+        body: Stack(
+          children: [
+            Container(
+              child: Center(
+                child: state.isReadyData
+                    ? _createBody(context, state.mercariItem)
+                    : Container(),
+              ),
+            ),
+            state.isLoading
+                ? Container(
+              color: Color(0x88000000),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
+            )
+                : Container(),
+          ],
+        ),
         bottomNavigationBar: _bottomNavigationBar(),
         floatingActionButton: _createActionButton(),
       ),
@@ -28,12 +54,14 @@ class MercariScreen extends StatelessWidget {
     );
   }
 
-  Widget _createBody(BuildContext context) {
-    final productList = _productDataList();
+  Widget _createBody(BuildContext context, List<MercariItem> mercariItems) {
+    if (mercariItems == null) {
+      return Container();
+    }
     return ListView.builder(
-      itemCount: productList.length,
+      itemCount: mercariItems.length,
       itemBuilder: (context, index) {
-        final data = productList[index];
+        final data = mercariItems[index];
         if (index == 0) {
           return Column(
             children: [
@@ -234,7 +262,7 @@ class MercariScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProductList(ProductData productData) {
+  Widget _buildProductList(MercariItem productData) {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: Dimens.d16,
@@ -310,41 +338,4 @@ class MercariScreen extends StatelessWidget {
       ),
     );
   }
-
-  List<ProductData> _productDataList() {
-    return [
-      ProductData(
-        'images/nicon.png',
-        'NiconD5500',
-        '¥55,000',
-        446,
-      ),
-      ProductData(
-        'images/nicon.png',
-        '早い者勝ち！【新品】ERA...',
-        '¥15,700',
-        177,
-      ),
-      ProductData(
-        'images/nicon.png',
-        'NiconD5500',
-        '¥55,000',
-        446,
-      ),
-    ];
-  }
-}
-
-class ProductData {
-  final image;
-  final name;
-  final price;
-  final fav;
-
-  ProductData(
-    this.image,
-    this.name,
-    this.price,
-    this.fav,
-  );
 }
