@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Constants.dart';
+import 'package:flutter_app/async/state/async_state.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 
 import '../prefs.dart';
+import 'async_state_notifier.dart';
 
-class AsyncScreen extends StatefulWidget {
+final asyncStateNotifierProvider =
+    StateNotifierProvider((ref) => AsyncStateNotifier());
+
+class AsyncScreen extends ConsumerWidget {
   @override
   _AsyncScreenState createState() => _AsyncScreenState();
 }
@@ -53,14 +60,16 @@ class _AsyncScreenState extends State<AsyncScreen> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ScopedReader watch) {
+    final state = watch(asyncStateNotifierProvider.state);
+
     return Scaffold(
-      body: _createBody(),
+      body: _createBody(context, state),
       floatingActionButton: _floatingActionButton(),
     );
   }
 
-  Widget _createBody() {
+  Widget _createBody(BuildContext context, AsyncState state) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
