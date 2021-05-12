@@ -1,9 +1,9 @@
 import 'package:flutter_app/practice2/model/netkeiba_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'netkaiba_state.freezed.dart';
+part 'netkeiba_state.freezed.dart';
 
-part 'netkaiba_state.g.dart';
+part 'netkeiba_state.g.dart';
 
 @freezed
 abstract class NetkeibaState with _$NetkeibaState {

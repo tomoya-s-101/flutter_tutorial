@@ -2,6 +2,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
 
+part 'netkeiba_api.g.dart';
+
 @RestApi(baseUrl: "https://hosting-json-a9ea3.web.app/")
 abstract class NetkeibaApi {
   factory NetkeibaApi(Dio dio, {String baseUrl}) = _NetkeibaApi;
