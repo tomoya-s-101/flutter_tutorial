@@ -52,6 +52,14 @@ class HomeScreen extends StatelessWidget {
                 Strings.qiitaText,
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/moor');
+              },
+              child: Text(
+                Strings.todoText,
+              ),
+            ),
           ],
         ),
       ),

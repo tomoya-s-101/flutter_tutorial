@@ -26,6 +26,7 @@ class Strings {
   static const String mercariText = "メルカリ";
   static const String asyncText = "async";
   static const String qiitaText = "Qiita";
+  static const String todoText = "Todo";
 
   // YouTubeScreen
   static const String trendingText = "急上昇";
@@ -100,6 +101,12 @@ class Strings {
   static const String flutterText = "Flutter";
   static const String androidText = "android";
   static const String iosText = "ios";
+
+  // TodoScreen
+  static const String inputTitleText = "タイトルを入力してください";
+  static const String inputContentText = "内容を入力してください";
+  static const String timeLimitText = "期限を選択してください";
+  static const String notInputDateText = "日付が未入力です";
 }
 
 class AppColors {
