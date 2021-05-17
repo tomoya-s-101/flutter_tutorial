@@ -4,94 +4,49 @@ import 'package:flutter_app/async/state/async_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 
-import '../prefs.dart';
-import 'async_state_notifier.dart';
-
 final asyncStateNotifierProvider =
-    StateNotifierProvider((ref) => AsyncStateNotifier());
+    StateNotifierProvider((ref) => AsyncScreen());
 
 class AsyncScreen extends ConsumerWidget {
-  @override
-  _AsyncScreenState createState() => _AsyncScreenState();
-}
-
-class _AsyncScreenState extends State<AsyncScreen> {
-  String name;
-  int age;
-  String birthday;
-
-  final nameController = TextEditingController();
-  final ageController = TextEditingController();
-  final birthdayController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
-
-  String emptyValidator(String value) {
-    if (value.isEmpty) {
-      return Strings.isEmptyText;
-    }
-    return null;
-  }
-
-  String ageValidator(String value) {
-    if (value.isEmpty || num.tryParse(value) == null) {
-      return Strings.ageValidatorText;
-    }
-    return null;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _loadUserData();
-  }
-
-  _loadUserData() async {
-    name = await Prefs.getName();
-    age = await Prefs.getAge();
-    birthday = await Prefs.getBirthDay();
-    setState(() {});
-  }
-
-  _saveUserData(String name, int age, String birthday) async {
-    await Prefs.setName(name);
-    await Prefs.setAge(age);
-    await Prefs.setBirthDay(birthday);
-  }
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
     final state = watch(asyncStateNotifierProvider.state);
-
     return Scaffold(
-      body: _createBody(context, state),
-      floatingActionButton: _floatingActionButton(),
+      body: _createBody(state),
+      floatingActionButton: _createFloatingActionButton(context, state),
     );
   }
 
-  Widget _createBody(BuildContext context, AsyncState state) {
+  Widget _createBody(AsyncState state) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(name != null ? '名前：$name' : '名前：未設定'),
-          Text(age != null ? '年齢：$age' : '年齢：未設定'),
-          Text(birthday != null ? '誕生日：$birthday' : '誕生日：未設定'),
+          Text(state.isReadyData ? '名前：${state.asyncItem.name}' : '名前：未設定'),
+          Text(state.isReadyData ? '年齢：${state.asyncItem.age}' : '年齢：未設定'),
+          Text(state.isReadyData
+              ? '誕生日：${state.asyncItem.birthday}'
+              : '誕生日：未設定'),
         ],
       ),
     );
   }
 
-  FloatingActionButton _floatingActionButton() {
+  Widget _createFloatingActionButton(BuildContext context, AsyncState state) {
     return FloatingActionButton(
       child: Icon(Icons.edit),
       onPressed: () {
-        _showDialog(context);
+        _showInputFormDialog(context, state);
       },
     );
   }
 
-  _showDialog(BuildContext context) {
+  _showInputFormDialog(BuildContext context, AsyncState state) {
+    String name;
+    int age;
+    String birthday;
     return showDialog(
       context: context,
       builder: (_) {
@@ -102,36 +57,52 @@ class _AsyncScreenState extends State<AsyncScreen> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextFormField(
-                  initialValue: name,
-                  controller: nameController,
+                  initialValue: state.asyncItem.name,
                   decoration: InputDecoration(
                     labelText: Strings.nameText,
                     hintText: '山田　太郎',
                   ),
-                  validator: (value) => emptyValidator(value),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return Strings.isEmptyText;
+                    }
+                    return null;
+                  },
                   onSaved: (value) {
                     name = value;
                   },
                 ),
                 TextFormField(
                   keyboardType: TextInputType.number,
-                  initialValue: age != null ? age.toString() : '',
+                  initialValue: state.asyncItem.age != null
+                      ? state.asyncItem.age.toString()
+                      : '',
                   decoration: InputDecoration(
                     labelText: Strings.ageText,
                     hintText: '数字で入力',
                   ),
-                  validator: (value) => ageValidator(value),
+                  validator: (value) {
+                    if (value.isEmpty || num.tryParse(value) == null) {
+                      return Strings.ageValidatorText;
+                    }
+                    return null;
+                  },
                   onSaved: (value) {
                     age = int.parse(value);
                   },
                 ),
                 TextFormField(
-                  initialValue: birthday,
+                  initialValue: state.asyncItem.birthday,
                   decoration: InputDecoration(
                     labelText: Strings.birthdayText,
                     hintText: '2000/1/1',
                   ),
-                  validator: (value) => emptyValidator(value),
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return Strings.isEmptyText;
+                    }
+                    return null;
+                  },
                   onSaved: (value) {
                     birthday = value;
                   },
@@ -149,8 +120,14 @@ class _AsyncScreenState extends State<AsyncScreen> {
               ),
             ),
             FlatButton(
-              onPressed: () {
-                _onTapSave();
+              onPressed: () async {
+                if (_formKey.currentState.validate()) {
+                  this._formKey.currentState.save();
+                  await context
+                      .read(asyncStateNotifierProvider)
+                      .writeUserData(name, age, birthday);
+                  Navigator.of(context).pop();
+                }
               },
               child: Text(
                 Strings.saveText,
@@ -160,14 +137,5 @@ class _AsyncScreenState extends State<AsyncScreen> {
         );
       },
     );
-  }
-
-  _onTapSave() {
-    if (_formKey.currentState.validate()) {
-      _saveUserData(name, age, birthday);
-      setState(() {});
-      this._formKey.currentState.save();
-      Navigator.of(context).pop();
-    }
   }
 }
