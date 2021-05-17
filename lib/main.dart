@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/moor/todo_screen.dart';
 import 'package:flutter_app/mvvm/qiita_client_screen.dart';
 import 'package:flutter_app/practice1/youtube_screen.dart';
 import 'package:flutter_app/async/async_screen.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/netkeiba': (context) => NetKeibaScreen(),
         '/async': (context) => AsyncScreen(),
         '/qiita': (context) => QiitaClientScreen(),
+        '/moor': (context) => TodoScreen(),
       },
     );
   }
