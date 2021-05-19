@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Constants.dart';
+import 'package:flutter_app/async/async_state_notifier.dart';
 import 'package:flutter_app/async/state/async_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 
 final asyncStateNotifierProvider =
-    StateNotifierProvider((ref) => AsyncScreen());
+    StateNotifierProvider((ref) => AsyncStateNotifier());
 
 class AsyncScreen extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
