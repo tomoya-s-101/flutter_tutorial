@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/youtube': (context) => YouTubeScreen(),
         '/mercari': (context) => MercariScreen(),
-        '/netkeiba': (context) => NetKeibaScreen(),
+        // '/netkeiba': (context) => NetKeibaScreen(),
         '/async': (context) => AsyncScreen(),
         '/qiita': (context) => QiitaClientScreen(),
         '/moor': (context) => TodoScreen(),

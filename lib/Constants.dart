@@ -107,6 +107,11 @@ class Strings {
   static const String inputContentText = "内容を入力してください";
   static const String timeLimitText = "期限を選択してください";
   static const String notInputDateText = "日付が未入力です";
+
+  // ExpenseScreen
+  static const String disbursementManagementText = "支出管理";
+  static const String balanceTableText = "収支表";
+  static const String Text = "";
 }
 
 class AppColors {
